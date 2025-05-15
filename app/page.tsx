@@ -40,11 +40,12 @@ export default function Home() {
       }
 
       const data = await response.json();
+      console.log(data.outputPath);
 
-      if (data?.file) {
-        setDownloadUrl(`http://localhost:5000${data.file}`);
+      if (data?.download_url) {
+        setDownloadUrl(data.download_url);
       } else {
-        setError("Conversion failed.");
+        setError("Conversion or Download failed.");
       }
     } catch (err) {
       setError("Server error.");
